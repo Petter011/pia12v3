@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import {
   Button,
   FlatList,
@@ -9,13 +10,21 @@ import {
   View,
 } from "react-native";
 
-export default function Box() {
+export default function Box(props) {
+  const [siffran, setSiffran] = useState(0);
 
- 
   return (
     <SafeAreaView style={styles.container}>
-     
-     <Text>Hej</Text>
+      <Text>{props.name.lastname}</Text>
+
+      <Text>{siffran}</Text>
+
+      <Button
+        title="klicka"
+        onPress={() => {
+          setSiffran(siffran + 1);
+        }}
+      />
 
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -27,7 +36,8 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     alignItems: "center",
     justifyContent: "center",
-    width: 60,
-    height: 60,
+    width: 100,
+    height: 100,
+    marginTop: 5,
   },
 });

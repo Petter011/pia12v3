@@ -8,62 +8,32 @@ import {
   TextInput,
   View,
 } from "react-native";
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+import ThirdView from './ThirdView'
 import { useState } from "react";
 import Box from "./Box";
-import Test from "./Test";
+import Readmore from "./Readmore";
+import Welcome from "./Welcome";
 
 export default function App() {
 
-  const [addname, onAddname] = useState("");
+  const Stack = createNativeStackNavigator();
 
-  const [people, setPeople] = useState("");
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.list}>Lista</Text>
+<NavigationContainer>
+  <Stack.Navigator>
 
-      <TextInput onChange={onAddname} value={addname} />
+    <Stack.Screen name='Starten' component={Welcome} />
+    <Stack.Screen name='Readmore' component={Readmore} />
+    <Stack.Screen name='Tredjevyn' component={ThirdView}/>
 
-      <Button
-        title="Lägg till"
-        onPress={() => {
-          var oldpeople = people;
-          oldpeople.push({key: addname, lastname: addname});
-          setPeople(oldpeople);
-        }}
-      />
-
-      <Box/>
-
-      <Test/>
-
-      <FlatList
-        data={people}
-        renderItem={({ item }) => {}}
-      />
-
-      <StatusBar style="auto" />
-    </SafeAreaView>
+  </Stack.Navigator>
+</NavigationContainer>
+   
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "green",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  item: {
-    color: "red",
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
-  list: {
-    alignContent: "center",
-    fontSize: 35,
-    color: "blue",
-  },
-});
+
