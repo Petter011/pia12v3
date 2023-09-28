@@ -11,6 +11,7 @@ import {
 
 import { useState } from "react";
 import Box from "./Box";
+import Test from "./Test";
 
 export default function App() {
 
@@ -34,8 +35,8 @@ export default function App() {
       />
 
       <Box/>
-      
-      <Box/>
+
+      <Test/>
 
       <FlatList
         data={people}
